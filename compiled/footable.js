@@ -1118,7 +1118,7 @@
 			if (!this.created) return;
 			this.$detail.children('th').html(this.column.title);
 			this.$el.clone()
-				.removeAttr('id')
+				.attr('id', this.$el.attr('id') ? this.$el.attr('id') + '-detail' : undefined)
 				.css('display', 'table-cell')
 				.html('')
 				.append(this.$el.contents().detach())
@@ -1243,7 +1243,6 @@
 	});
 
 })(jQuery, FooTable);
-
 (function($, F){
 
 	F.Column = F.Class.extend(/** @lends FooTable.Column */{
