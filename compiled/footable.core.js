@@ -2049,7 +2049,11 @@
 					if (!F.str.startsWith(classes[i], 'footable')) self.classes.push(classes[i]);
 				}
 
-				self.$el.hide().after(self.$loader);
+				self.$el.hide();
+				if (!$.contains(document.documentElement, self.$loader.get(0))) {
+					self.$el.after(self.$loader);
+				}
+
 				return self.execute(false, false, 'preinit', self.data);
 			});
 		},
@@ -2310,6 +2314,7 @@
 	});
 
 })(jQuery, FooTable);
+
 (function($, F){
 
 	if (F.is.undef(window.moment)){
